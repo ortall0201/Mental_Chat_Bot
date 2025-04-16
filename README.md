@@ -1,4 +1,4 @@
-# 🧠 Mental Chat Bot – CrewAI-Based POC
+# 🧠 Mental Chat Bot – CrewAI-Based POC - Team1
 
 This repository contains the initial **Proof of Concept (POC)** for a modular, agentic mental health chatbot built using the **CrewAI framework**.
 
