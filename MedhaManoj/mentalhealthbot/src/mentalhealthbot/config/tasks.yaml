@@ -1,0 +1,64 @@
+# Task 1: Analyse emotion
+analyse_emotion:
+  agent: 'emotion_analyser'
+  description: >
+    This task involves analyzing the user's input to identify their emotional state.
+    The agent will use its expertise in emotional analysis to detect the underlying
+    feelings and sentiments expressed in the text. The goal is to provide insights
+    into the user's emotional state and help them navigate their feelings.
+  expected_output: >
+    The agent should provide a detailed analysis of the
+    - user's emotional state,
+    - specific emotions detected and any relevant context or subtext.
+    The output should be clear and easy to understand, allowing the user to gain
+    a deeper understanding of their emotional state.
+  context: []
+  tools: []
+
+# Task 2: Retrieve resources/Coping strategies
+
+retrieve_resources:
+  agent: 'knowledge_seeker'
+  description: >
+    This task involves searching through indexed documents to find the most relevant
+    resources and coping strategies for {analyse_emotion.output.emotion}. The agent
+    will use its expertise in information retrieval to identify the most helpful
+    materials and provide them to the user from:
+      - Therapy manuals
+      - Curated mental health articles
+      - Clinical guidelines.
+  expected_output: >
+    - 2-3 relevant resources or coping strategies
+    - Key strategies or techniques that can help the user cope with their emotions.
+    - The output should be clear and easy to understand, allowing the user to access 
+      the information they need to improve their emotional well-being.
+    - Confidence in relevance
+  context: []
+  tools: []
+
+# Task 3: Generate a supportive final message
+
+generate_response:
+  agent: 'suggestion_provider'
+  description: >
+    Create a final response combining:
+    - {analyse_emotion.output}
+    - {retrieve_resources.output}
+    The agent will synthesize the information from the previous tasks and present it
+    in a clear and compassionate manner.
+    Include:
+      1. Emotional validation
+      2. 2 personalised coping strategies
+      3. Follow-up questions
+      4. Empathetic language
+      5. Supportive tone
+  expected_output: >
+    A well-structured response that includes warm supportive language in this structure:
+    - Acknowledgment of the user's feelings
+    - Technique 1 from resources
+    - Technique 2 from resources
+    - Follow-up questions to encourage further discussion
+    - Empathetic language to show understanding and support
+    The output should be clear, actionable, and designed to help the user navigate their feelings and improve their emotional well-being.
+  context: []
+  tools: []
