@@ -1,5 +1,0 @@
-git rm -r --cached venv
-venv/
-env/
-.venv/
-.ENV/
