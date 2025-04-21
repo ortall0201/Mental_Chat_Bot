@@ -1,0 +1,25 @@
+# tasks.yaml
+plan_flow:
+  description: Evaluate the user's input and decide which agent(s) and tool(s) should be activated to support them.
+  expected_output: A plan of action such as "Run emotion classification + knowledge retrieval"
+  agent: orchestrator
+
+classify_emotion:
+  description: Use the user input to identify their current emotional state.
+  expected_output: Emotion label (e.g., sadness, anxiety, anger) and short justification.
+  agent: emotion_classifier
+
+read_knowledge:
+  description: Read internal documents and summarize key info.
+  expected_output: Digest of document sections relevant to emotional wellbeing.
+  agent: knowledge_reader
+
+retrieve_knowledge:
+  description: Retrieve helpful strategies or insights from internal knowledge.
+  expected_output: 2–3 supportive resources based on emotional context.
+  agent: knowledge_retriever
+
+compose_response:
+  description: Write a final message to the user that offers support, addresses the emotional state, and includes resources.
+  expected_output: A warm, supportive paragraph with advice and next steps.
+  agent: solution_synthesizer
