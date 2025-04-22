@@ -39,3 +39,13 @@ Here are some immediate steps you can take:
 Remember, maintaining a regular daily routine can also contribute to overall well-being.  Choose one of these suggestions and let me know how it goes!
 [2025-04-22 20:09:47] You: exit
 [2025-04-22 20:09:47] Chatbot ended.
+[2025-04-23 00:27:02] Chatbot started.
+[2025-04-23 00:28:00] You: hi
+[2025-04-23 00:28:21] Bot: You seem neutral—try a quick stretch or deep breathing to boost your mood!  Even a simple greeting like "hi" is a good start to connecting, so let's build on that positive energy.  How about taking a short walk to enjoy the fresh air and get some light exercise?  Or perhaps connecting with a friend or family member for a quick chat?  Small actions can make a big difference in maintaining a positive state of mind.
+[2025-04-23 00:29:04] You: exit
+[2025-04-23 00:29:04] Chatbot ended.
+[2025-04-23 01:14:39] Chatbot started.
+[2025-04-23 01:14:42] You: hi
+[2025-04-23 01:15:11] Bot: You seem to be feeling neutral, which is perfectly fine!  To maintain this positive state and perhaps even boost your mood slightly, I suggest trying a quick stretch or some deep breathing exercises.  Maintaining a balanced lifestyle is key to overall well-being, so remember to prioritize regular sleep, light exercise, and incorporating mindfulness practices into your day.  Even small acts of self-care, like connecting with a friend or engaging in a creative activity, can make a difference.
+[2025-04-23 01:15:19] You: exit
+[2025-04-23 01:15:19] Chatbot ended.

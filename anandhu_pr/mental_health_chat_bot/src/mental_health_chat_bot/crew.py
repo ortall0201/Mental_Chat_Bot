@@ -109,4 +109,6 @@ class MentalHealthChatbotCrew:
             tasks=self.tasks,
             process=Process.sequential,
             verbose=False,
+            planning=True,
+            planning_llm="gemini-1.5-flash",
         )
