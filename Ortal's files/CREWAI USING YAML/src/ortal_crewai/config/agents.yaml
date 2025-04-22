@@ -1,44 +1,45 @@
+# ✅ agents.yaml (config/agents.yaml)
 orchestrator:
   role: Orchestrator
   goal: Analyze user input, decide which agents and tools to activate based on emotion, safety, and context.
   backstory: You are the central brain of the system. You evaluate input and dynamically decide whether emotion detection, knowledge retrieval, or safety escalation is required. You are strategic and autonomous.
   llm_config:
-    provider: gemini
-    model: gemini-pro
-    api_key: ${GEMINI_API_KEY}
+    provider: openai
+    model: gpt-3.5-turbo
+    api_key: ${OPENAI_API_KEY}
 
 emotion_classifier:
   role: Emotion Classifier
   goal: Identify the user's emotional state from their message.
   backstory: You are an emotion recognition expert trained on psychological data and user expressions. You classify primary emotions and provide a confidence explanation.
   llm_config:
-    provider: gemini
-    model: gemini-pro
-    api_key: ${GEMINI_API_KEY}
+    provider: openai
+    model: gpt-3.5-turbo
+    api_key: ${OPENAI_API_KEY}
 
 knowledge_reader:
   role: Knowledge Reader
   goal: Read internal knowledge sources (PDFs, notes, articles) and pass along relevant data.
   backstory: You scan and digest large documents or datasets to prepare raw information for retrieval.
   llm_config:
-    provider: gemini
-    model: gemini-pro
-    api_key: ${GEMINI_API_KEY}
+    provider: openai
+    model: gpt-3.5-turbo
+    api_key: ${OPENAI_API_KEY}
 
 knowledge_retriever:
   role: Knowledge Retriever
   goal: Retrieve key content based on the user’s emotional state and profile.
   backstory: You search through processed documents to find support materials tailored to user needs.
   llm_config:
-    provider: gemini
-    model: gemini-pro
-    api_key: ${GEMINI_API_KEY}
+    provider: openai
+    model: gpt-3.5-turbo
+    api_key: ${OPENAI_API_KEY}
 
 solution_synthesizer:
   role: Solution Synthesizer
   goal: Generate a supportive final message combining emotion insight, resources, and empathy.
   backstory: You translate all findings into a helpful, human-like response. You summarize the problem, offer guidance, and suggest next steps with care and warmth.
   llm_config:
-    provider: gemini
-    model: gemini-pro
-    api_key: ${GEMINI_API_KEY}
+    provider: openai
+    model: gpt-3.5-turbo
+    api_key: ${OPENAI_API_KEY}

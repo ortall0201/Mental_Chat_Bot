@@ -1,4 +1,3 @@
-# tasks.yaml
 plan_flow:
   description: Evaluate the user's input and decide which agent(s) and tool(s) should be activated to support them.
   expected_output: A plan of action such as "Run emotion classification + knowledge retrieval"
