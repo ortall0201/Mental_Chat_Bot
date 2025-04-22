@@ -5,6 +5,10 @@ import os
 import datetime
 
 
+# Load environment variables
+load_dotenv()
+print("GOOGLE_API_KEY:", os.getenv("GOOGLE_API_KEY"))  # Debug print
+
 def log_conversation(message: str):
     """Append message to conversation log with timestamp."""
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")

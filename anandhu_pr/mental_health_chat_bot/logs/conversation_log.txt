@@ -21,3 +21,21 @@ Here are some immediate steps you can take:
 3. **Grounding technique:** When intense emotions overwhelm you, try a grounding exercise to reconnect with the present moment. One simple technique is the 5-4-3-2-1 method: Notice five things you can see, four things you can touch, three things you can hear, two things you can smell, and one thing you can taste. This can help bring you back from distressing thoughts and into your body.
 [2025-04-22 09:19:39] You: exit
 [2025-04-22 09:19:39] Chatbot ended.
+[2025-04-22 20:01:47] Chatbot started.
+[2025-04-22 20:01:50] You: hi
+[2025-04-22 20:02:03] Bot: Hi there! How are you doing today?  It seems like you might be feeling pretty neutral. Sometimes a little boost can make a difference.  Perhaps try a quick stretch, take a moment to check in with yourself and your breath, or grab a glass of water. These small actions can sometimes shift your energy and mood.
+[2025-04-22 20:02:08] You: exit
+[2025-04-22 20:02:08] Chatbot ended.
+[2025-04-22 20:09:00] Chatbot started.
+[2025-04-22 20:09:02] You: hi
+[2025-04-22 20:09:21] Bot: Hi there! You seem to be feeling neutral today. That's okay!  Let's focus on proactively maintaining a positive outlook.  Even when we're not feeling particularly happy or sad, taking care of ourselves is important. How about trying one of these simple, mood-boosting activities?
+
+1. **Mindful Movement:** A short walk, some stretching, or even just a few minutes of gentle dancing can help ground you in the present moment and improve your mood.  Focus on how your body feels as you move.
+
+2. **Hydration and Nourishment:**  Drink a glass of water or enjoy a healthy snack.  Simple self-care like this can make a difference.
+
+3. **Sensory Engagement:**  Listen to your favorite song, smell some flowers, or feel the texture of a soft blanket. Engaging your senses can subtly lift your spirits.
+
+Remember, maintaining a regular daily routine can also contribute to overall well-being.  Choose one of these suggestions and let me know how it goes!
+[2025-04-22 20:09:47] You: exit
+[2025-04-22 20:09:47] Chatbot ended.
