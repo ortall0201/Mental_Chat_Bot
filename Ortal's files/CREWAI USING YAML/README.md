@@ -22,9 +22,14 @@ crewai install
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
 
-.env template file should look like this:
+### 🔐 .env Configuration
+
+Before running the project, create a `.env` file in the root directory and add the following:
+
+```env
 MODEL=gpt-3.5-turbo
-OPENAI_API_KEY=sk-xxxxxxx
+OPENAI_API_KEY=your-openai-api-key-here
+```
 
 - Modify `src/ortal_crewai/config/agents.yaml` to define your agents
 - Modify `src/ortal_crewai/config/tasks.yaml` to define your tasks
