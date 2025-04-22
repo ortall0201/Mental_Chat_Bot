@@ -1,0 +1,3 @@
+tasks:
+  - description: "Analyze the message: 'I'm feeling kind of down today.'"
+    expected_output: "The output should classify the emotional tone (e.g., happy, sad, neutral) and explain the reasoning behind the classification based on the message content."

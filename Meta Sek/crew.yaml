@@ -1,0 +1,10 @@
+tasks:
+  - name: DetectEmotionTask
+    description: Analyze the provided text input to identify the dominant emotion.
+    expected_output: A string indicating the dominant emotion (e.g., "anxious", "sad", "neutral") and a confidence score (e.g., "anxious, 0.85").
+  - name: SuggestResponseTask
+    description: Provide a helpful response based on the detected emotion from the EmotionDetector.
+    expected_output: A string containing a personalized suggestion or response (e.g., "It sounds like you’re feeling anxious. Try taking deep breaths or sharing how you feel with a friend.").
+  - name: CheckSafetyTask
+    description: Review the suggested response to ensure it is safe and appropriate.
+    expected_output: A string confirming the response is safe (e.g., "Response is safe and appropriate") or suggesting modifications if unsafe.
