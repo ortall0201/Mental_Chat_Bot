@@ -1,0 +1,1 @@
+Crisis detected: The user stated, "sometimes i feel like ending my life," which is a clear indication of suicidal thoughts. Escalating with care.

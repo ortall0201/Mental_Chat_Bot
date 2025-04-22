@@ -27,19 +27,27 @@ class MentalHealthChatbotCrew:
 
     @task
     def emotion_detection_task(self) -> Task:
-        return Task(config=self.tasks_config["emotion_detection_task"])
+        return Task(config=self.tasks_config["emotion_detection_task"],
+                    output_file="logs/safety_check.md"
+                    )
 
     @task
     def safety_check_task(self) -> Task:
-        return Task(config=self.tasks_config["safety_check_task"])
+        return Task(config=self.tasks_config["safety_check_task"],
+                    output_file="logs/safety_check.md"
+                    )
 
     @task
     def suggestion_task(self) -> Task:
-        return Task(config=self.tasks_config["suggestion_task"])
+        return Task(config=self.tasks_config["suggestion_task"],
+                    output_file="logs/suggestion.md"
+                    )
 
     @task
     def orchestrate_task(self) -> Task:
-        return Task(config=self.tasks_config["orchestrate_task"])
+        return Task(config=self.tasks_config["orchestrate_task"],
+                    output_file="logs/orchestrate.md"
+                    )
 
     @crew
     def crew(self) -> Crew:
