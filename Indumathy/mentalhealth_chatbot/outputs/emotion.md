@@ -1,1 +1,1 @@
-Unable to determine primary emotion, no input text was provided
+{'emotion': 'neutral'}
