@@ -1,0 +1,4 @@
+weaviate-client
+crewai
+uv
+crewai_tools

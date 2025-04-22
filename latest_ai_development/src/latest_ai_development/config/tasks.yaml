@@ -1,0 +1,113 @@
+emotion_detection_task:
+  description: >
+    Analyze user input to identify emotional states, psychological concerns, and potential risk factors.
+    Classify the emotional state (e.g., anxious, depressed, neutral, positive) and assign a risk level 
+    (low, medium, high) based on content analysis. Pay special attention to indicators of self-harm,
+    suicidal ideation, or severe distress.
+  expected_output: >
+    A structured assessment containing: primary emotional state, secondary emotions detected,
+    risk level classification, key phrases or indicators that informed the assessment, and
+    recommended response approach.
+  agent: emotion_detector
+
+resource_retrieval_task:
+  description: >
+    Based on the identified emotional state and concerns, retrieve relevant mental health
+    resources, coping strategies, therapeutic techniques, and self-help materials that
+    address the specific situation. Focus on evidence-based approaches appropriate for
+    the detected emotional state and risk level.
+  expected_output: >
+    A curated collection of 3-5 relevant resources specifically tailored to the user's
+    emotional state and concerns. Each resource should include a brief description of
+    its relevance and potential benefit to the current situation.
+  agent: rag_retriever
+
+support_response_task:
+  description: >
+    Using the emotional assessment and retrieved resources, craft a supportive, empathetic
+    response that acknowledges the user's feelings, offers appropriate guidance, and
+    presents relevant self-help suggestions. The tone should be adjusted based on the
+    detected emotional state and risk level.
+  expected_output: >
+    A compassionate response that validates emotions, offers specific coping strategies
+    from the retrieved resources, and encourages healthy mental health practices.
+    The response should be conversational, supportive, and non-clinical in tone.
+  agent: rag_reader
+
+risk_evaluation_task:
+  description: >
+    Evaluate whether the current interaction requires escalation based on risk assessment.
+    For high-risk situations (indications of immediate self-harm, suicide risk, or acute crisis),
+    determine appropriate escalation protocols and emergency resource recommendations.
+  expected_output: >
+    A decision on whether escalation is needed, and if so, specific guidance including:
+    crisis hotline information, emergency service recommendations, clear instructions for
+    immediate support, and appropriate disclaimers about the limitations of AI assistance
+    in emergency situations.
+  agent: escalation_manager
+
+conversation_management_task:
+  description: >
+    Maintain context of the ongoing conversation, track emotional trends across interactions,
+    and adjust response strategies based on conversation history. Ensure continuity in support
+    approach while being responsive to changes in emotional state.
+  expected_output: >
+    Updated conversation context including: notable changes in emotional state, recurring themes
+    or concerns, effectiveness of previous suggestions, and recommendations for adjusting
+    the support approach in subsequent interactions.
+  agent: rag_reader
+
+agent_selection_task:
+  description: >
+    Analyze user input and conversation context to determine which agent should handle the current message.
+    Consider the following factors:
+      - Presence of emotional distress indicators (→ emotion_detector)
+      - Requests for specific mental health information (→ rag_retriever)
+      - Need for supportive guidance (→ rag_reader)
+      - Signs of potential crisis or high-risk situation (→ escalation_manager)
+      - Follow-up to previous interactions (→ context from conversation_management_task)
+    
+    If multiple agents could be relevant, prioritize in this order:
+    1. Crisis situations (escalation_manager)
+    2. New emotional states (emotion_detector)
+    3. Information requests (rag_retriever)
+    4. General support (rag_reader)
+  
+  expected_output: >
+    A selection decision containing:
+      - Primary agent to handle the message
+      - Justification for the selection
+      - Secondary agents to consult if needed
+      - Key aspects of the message that informed the decision
+      - Conversation stage classification (initial contact, follow-up, crisis response, etc.)
+  
+  agent: workflow_controller
+
+conversation_flow_task:
+  description: >
+    Based on the current conversation state and agent interactions, determine the optimal
+    sequence of agent invocations to handle the user's needs. Create a processing pipeline
+    that routes information between agents and ensures all necessary tasks are performed
+    in the appropriate order.
+  
+  expected_output: >
+    A sequence plan containing:
+      - Ordered list of agents/tasks to invoke
+      - Data dependencies between tasks
+      - Decision points where flow might branch based on intermediate results
+      - Completion criteria for the current interaction
+  
+  agent: workflow_controller
+
+response_integration_task:
+  description: >
+    Combine outputs from multiple agents into a cohesive, natural response. Ensure consistency
+    in tone, eliminate redundancies, and maintain appropriate prioritization of information
+    (e.g., safety instructions before general advice).
+  
+  expected_output: >
+    A unified response that seamlessly integrates insights from different agents while
+    maintaining a consistent, supportive voice. The response should feel like it comes
+    from a single, empathetic entity rather than a collection of specialized systems.
+  
+  agent: workflow_controller
