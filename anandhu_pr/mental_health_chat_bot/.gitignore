@@ -1,0 +1,4 @@
+.env
+__pycache__/
+.DS_Store
+crew_env_312/
