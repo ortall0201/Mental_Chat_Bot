@@ -1,0 +1,43 @@
+emotion_detection_task:
+  description: >
+    Analyze the user's input: "{user_input}"
+    Determine the primary emotional state (e.g., sadness, anxiety, happiness, neutral) and summarize the emotional context.
+  expected_output: >
+    A summary of the user's emotional state, e.g., "The user appears to be feeling neutral."
+  output_key: emotion_summary  
+  agent: emotion_detector
+
+safety_check_task:
+  description: >
+    Review the user's input: "{user_input}"
+    Check for red flags like self-harm or suicidal thoughts. If detected, provide an empathetic response and escalate. If none, confirm safety.
+  expected_output: >
+    Either: "No red flags detected." or "Crisis detected: [details]. Escalating with care."
+  output_key: safety_result  
+  agent: safety_agent
+  context:
+    - emotion_detection_task
+
+suggestion_task:
+  description: >
+    Provide 2-3 practical, empathetic suggestions to support the user's mental well-being.
+  expected_output: >
+    A list of suggestions, e.g., "Try a 5-minute deep breathing exercise to relax."
+  output_key: suggestions  
+  agent: suggestion_agent
+  context:
+    - emotion_detection_task
+    - safety_check_task
+
+orchestrate_task:
+  description: >
+    Coordinate all tasks for the input: "{user_input}"
+    Prioritize the safety_result if a crisis is detected, otherwise combine suggestions for a cohesive response.
+  expected_output: >
+    A final response, e.g., "You seem neutral—try a quick stretch to boost your mood!"
+  output_key: final_response  # Explicitly name the output
+  agent: orchestrator
+  context:
+    - emotion_detection_task
+    - safety_check_task
+    - suggestion_task
