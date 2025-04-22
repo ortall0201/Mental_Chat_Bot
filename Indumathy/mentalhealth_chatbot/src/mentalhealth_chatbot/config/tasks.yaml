@@ -1,0 +1,13 @@
+detect_emotion:
+  description: "Identify the primary emotion"
+  expected_output: "Primary emotion detected"  
+
+
+provide_suggestions:
+  description: >
+    Based on the user's emotional state and safety risk level, provide appropriate
+    support strategies. If high-risk phrases are detected (like suicidal thoughts), 
+    prioritize safety and offer immediate support resources instead of general suggestions.
+  expected_output: >
+    A compassionate response that includes appropriate coping strategies, or 
+    escalation guidance if the safety risk is high.

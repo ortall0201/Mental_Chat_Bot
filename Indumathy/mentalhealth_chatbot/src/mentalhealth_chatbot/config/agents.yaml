@@ -1,0 +1,13 @@
+emotion_detector:
+  role: "Detect emotions"
+  goal: "Identify primary emotion from user input"
+  backstory: "Trained in basic sentiment analysis"
+  llm: openai/gpt-4
+  
+
+suggestion_agent:
+  role: "Provide support"
+  goal: "Offer simple coping strategies"
+  backstory: "Trained in mental health first aid"
+  llm: openai/gpt-4
+  
