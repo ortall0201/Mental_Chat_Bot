@@ -1,11 +1,10 @@
-Mental Health Tips
-- Maintain routines: Keeping a regular schedule can provide a sense of normalcy.
-- Engage in activities you enjoy: Doing things you find pleasurable can boost your mood and overall well-being.
-- Practice mindfulness: Engage in activities that ground you in the present moment, such as meditation or deep breathing exercises.
-- Connect with others: Spend time with loved ones, friends, or engage in social activities to combat feelings of isolation.
-- Prioritize physical health: Exercise, healthy eating, and sufficient sleep greatly influence mental well-being.
-- Practice self-compassion: Be kind and understanding towards yourself, acknowledging that it's okay to not always feel great.
-- Set realistic goals: Avoid overwhelming yourself with too many tasks. Break down large goals into smaller, achievable steps.
-- Learn new skills: Engage in activities that challenge and stimulate you, such as learning a new language or instrument.
-- Seek professional help if needed: Don't hesitate to reach out to a therapist or counselor if you're struggling to manage your mental health.
-- Engage in creative activities: Express yourself through art, music, writing, or other creative outlets.
+health problems. They may also help prevent some from developing or getting worse.
+Find out more about self-care and 8 relaxation tips for your mental health.
+5. Stay Socially Connected
+Spend time with family and friends and volunteer for 
+causes you genuinely care about. Meaningful social 
+connections significantly improve mental health.
+improve mental health. Meditate for at least 15 
+minutes every day, and combine it with some 
+asanas. And remember, it takes two months of 
+daily practice to change a behaviour into a habit!

@@ -2,6 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 import os
 from  mental_health_chat_bot.tools.custom_rag_tool import CustomRAGTool
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from dotenv import load_dotenv
 
 
