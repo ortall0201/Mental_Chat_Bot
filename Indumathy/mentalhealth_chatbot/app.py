@@ -6,7 +6,6 @@ import streamlit as st
 from dotenv import load_dotenv
 from mentalhealth_chatbot.main import get_bot_response
 
-
 # Load environment variables
 load_dotenv()
 
@@ -14,26 +13,58 @@ load_dotenv()
 st.set_page_config(page_title="Mental Health Chatbot", page_icon="🤖")
 st.title("🤖 Mental Health Chatbot")
 
-# Environment key check
+# API Key check
 if not os.getenv("GOOGLE_API_KEY"):
     st.warning("Please set your GOOGLE_API_KEY in a .env file before using the chatbot.")
     st.stop()
 
-# Session memory
+# Initialize conversation
 if "conversation" not in st.session_state:
     st.session_state.conversation = []
 
-# Input field
-user_input = st.text_input("How are you feeling today?", key="user_input")
+# Static welcome prompt
+st.markdown("### How are you feeling today?")
 
-# Get response
-if user_input:
+# Show chat history
+for msg in st.session_state.conversation:
+    if msg.startswith("User:"):
+        st.markdown(f"🧑 **You:** {msg[6:]}")
+    elif msg.startswith("Bot:"):
+        st.markdown(f"🤖 **Bot:** {msg[5:]}")
+
+# Custom styling for clean input + send button
+st.markdown("""
+    <style>
+    div[data-baseweb="input"] input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    button[kind="formSubmit"] {
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        margin-top: 0px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Input row with icon
+with st.form(key="chat_form", clear_on_submit=True):
+    cols = st.columns([10, 1])
+    user_input = cols[0].text_input(
+        "", 
+        placeholder="Type your message...", 
+        label_visibility="collapsed"
+    )
+    submitted = cols[1].form_submit_button("➤")
+
+# On message send
+if submitted and user_input:
+    conversation_history = st.session_state.conversation.copy()
+
     with st.spinner("Thinking..."):
-        bot_reply, st.session_state.conversation = get_bot_response(user_input, st.session_state.conversation)
-        st.session_state.conversation.append(f"Bot: {bot_reply}")
+        bot_reply, updated_convo = get_bot_response(user_input, conversation_history)
+        st.session_state.conversation = updated_convo
 
-# Display only latest bot reply
-if st.session_state.conversation:
-    last_msg = st.session_state.conversation[-1]
-    if last_msg.startswith("Bot:"):
-        st.markdown(f"🤖 **Bot:** {last_msg[5:]}")
+    st.rerun()
