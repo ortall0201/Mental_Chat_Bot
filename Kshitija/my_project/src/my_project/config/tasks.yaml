@@ -1,0 +1,41 @@
+emotion_detection_task:
+  description: >
+    Analyze the user's input: "${topic}"
+    Determine the primary emotional state (e.g., stress, anxiety, depression, fear, anger, joy, neutral)
+    and summarize the emotional context in an empathetic manner. Understand the basic emotion of a user. Tell user that
+    you are here to help and support and make user feel comfortable sharing things with you. 
+  expected_output: >
+    A summary of the user's emotional state, e.g., "The user appears to be feeling stressed."
+  output_key: emotion_summary
+  agent: emotion_detector
+
+
+safety_check_task:
+  description: >
+    Analyze the user's message to determine if they may be in emotional distress, particularly showing signs of suicidal thoughts or self-harm.
+    If such risk is detected, respond with a warm, caring message encouraging them to seek immediate support.
+    Provide local and international crisis hotlines and suggest speaking to trusted individuals such as friends, family, or a therapist.
+    If no danger is detected, respond with a supportive message, make user comfortable with you, gently encouraging the user to continue expressing themselves.
+  agent: safety_agent
+  expected_output: >
+    - If risk is detected: Provide a heartfelt, empathetic response. Try to understand why they are thinking about this, ask questions. 
+    Suggest reaching out to a trusted person (family, friend, counselor), and
+      include the following helplines:
+        • 🇺🇸 USA: 988 Suicide & Crisis Lifeline (call/text 988)
+        • 🇬🇧 UK: Samaritans at 116 123
+        • 🇮🇳 India: iCall at +91 9152987821 or AASRA at +91-9820466726
+      Reassure them they are not alone.
+    - If no risk is detected: Offer a warm but neutral acknowledgment, and encourage the user to continue sharing if they'd like.
+
+
+suggestion_task:
+  description: >
+    Based on the identified emotional state of a user, first talk empathetically to the user and then provide empathetic and actionable suggestions or supportive messages
+    tailored to help the user cope with or address their emotional state. Don't ask user to enroll on any digital platform.
+  expected_output: >
+    A supportive and constructive list of responses, e.g., 
+    "It seems like you're feeling stressed. Try taking a short walk or doing some deep breathing exercises."
+  output_key: support_message
+  agent: suggestion_agent
+  context:
+    - emotion_detection_task
