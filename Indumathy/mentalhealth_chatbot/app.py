@@ -1,70 +1,23 @@
-import sys
-import os
-sys.path.append(os.path.abspath("src"))
-
 import streamlit as st
-from dotenv import load_dotenv
-from mentalhealth_chatbot.main import get_bot_response
 
-# Load environment variables
-load_dotenv()
 
-# Page setup
-st.set_page_config(page_title="Mental Health Chatbot", page_icon="🤖")
-st.title("🤖 Mental Health Chatbot")
+# Page configuration
+st.set_page_config(page_title="MindfulChat", page_icon="💬", layout="centered")
 
-# API Key check
-if not os.getenv("GOOGLE_API_KEY"):
-    st.warning("Please set your GOOGLE_API_KEY in a .env file before using the chatbot.")
-    st.stop()
-
-# Initialize conversation
-if "conversation" not in st.session_state:
-    st.session_state.conversation = []
-
-# Static welcome prompt
-st.markdown("### How are you feeling today?")
-
-# Show chat history
-for msg in st.session_state.conversation:
-    if msg.startswith("User:"):
-        st.markdown(f"🧑 **You:** {msg[6:]}")
-    elif msg.startswith("Bot:"):
-        st.markdown(f"🤖 **Bot:** {msg[5:]}")
-
-# Custom styling for clean input + send button
-st.markdown("""
-    <style>
-    div[data-baseweb="input"] input {
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
-    button[kind="formSubmit"] {
-        width: 42px;
-        height: 42px;
-        border-radius: 8px;
-        margin-top: 0px;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Input row with icon
-with st.form(key="chat_form", clear_on_submit=True):
-    cols = st.columns([10, 1])
-    user_input = cols[0].text_input(
-        "", 
-        placeholder="Type your message...", 
-        label_visibility="collapsed"
-    )
-    submitted = cols[1].form_submit_button("➤")
-
-# On message send
-if submitted and user_input:
-    conversation_history = st.session_state.conversation.copy()
-
-    with st.spinner("Thinking..."):
-        bot_reply, updated_convo = get_bot_response(user_input, conversation_history)
-        st.session_state.conversation = updated_convo
-
-    st.rerun()
+# Landing Page Content
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <h1>MindfulChat</h1>
+        <h4>A safe space to talk about your mental health</h4>
+        <p>MindfulChat is here to provide support, resources, and a listening ear when you need it.</p>
+        <br>
+        <a href="/User_Info" target="_self">
+            <button style="background-color: #2E8B57; color: white; padding: 10px 20px; font-size: 18px; border-radius: 8px;">Get Started</button>
+        </a>
+        <br><br>
+        <p style="font-size: 12px;">Note: This is not a replacement for professional mental health services. If you are in crisis, please contact emergency services.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)

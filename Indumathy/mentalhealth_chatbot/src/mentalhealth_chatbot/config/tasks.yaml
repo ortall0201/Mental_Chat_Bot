@@ -1,18 +1,18 @@
 emotion_detection_task:
   description: >
     Analyze the user's input: "{user_input}"
-    Determine the primary emotional state (e.g., sadness, anxiety, happiness, neutral) and summarize the emotional context.
+    Identify their primary emotion (e.g., sadness, anxiety, neutral) and provide a short emotional summary.
   expected_output: >
-    A summary of the user's emotional state, e.g., "The user appears to be feeling neutral."
+    A short emotion label, e.g., "User feels anxious."
   output_key: emotion_summary
   agent: emotion_detector
 
 safety_check_task:
   description: >
-    Review the user's input: "{user_input}"
-    Check for red flags like self-harm or suicidal thoughts. If detected, provide an empathetic response and escalate. If none, confirm safety.
+    Review: "{user_input}"
+    Check for crisis-related language (e.g., suicidal thoughts, self-harm). Respond if critical or confirm safety.
   expected_output: >
-    Either: "No red flags detected." or "Crisis detected: [details]. Escalating with care."
+    "Crisis detected: ..." or "No red flags detected."
   output_key: safety_result
   agent: safety_agent
   context:
@@ -20,9 +20,9 @@ safety_check_task:
 
 rag_retrieval_task:
   description: >
-    Retrieve relevant mental health tips from the text corpus based on the user's emotional state provided by the emotion detection task.
+    Based on the user's emotional state, retrieve concise mental health tips from the corpus.
   expected_output: >
-    A list of relevant mental health tips based on the user's emotional state, e.g., "Reach out to others: Connect with friends, family, or support groups to foster relationships."
+    1–2 short tips, e.g., "Take a walk in nature. Try deep breathing exercises."
   output_key: retrieved_tips
   agent: rag_retriever
   context:
@@ -30,9 +30,9 @@ rag_retrieval_task:
 
 rag_reading_task:
   description: >
-    Summarize the mental health tips retrieved from the text corpus to provide concise guidance tailored to the user's emotional state.
+    Summarize the tips retrieved in a helpful and brief tone.
   expected_output: >
-    A concise summary of the retrieved mental health tips tailored to the user's emotional state, e.g., "Connecting with others and volunteering can help reduce loneliness."
+    A 1-2 line practical summary of the tips.
   output_key: summarized_tips
   agent: rag_reader
   context:
@@ -41,9 +41,9 @@ rag_reading_task:
 
 suggestion_task:
   description: >
-    Provide practical, empathetic suggestions to support the user's mental well-being based on their emotional state and retrieved knowledge.
+    Give 1-2 practical, empathetic suggestions based on emotional state and retrieved tips.
   expected_output: >
-    A list of 2-3 practical, empathetic suggestions to support the user's mental well-being, e.g., "Try reaching out to a friend or family member to connect."
+    Very short suggestions (1-2 lines). E.g., "Try a short breathing exercise. Take a break from screens."
   output_key: suggestions
   agent: suggestion_agent
   context:
@@ -54,9 +54,12 @@ suggestion_task:
 
 orchestrate_task:
   description: >
-    Coordinate all tasks to produce a cohesive response for the user's input: "{user_input}", prioritizing safety if a crisis is detected.
+    Respond to: "{user_input}" with an adaptive tone and length.
+    - For greetings or neutral input: be short and friendly.
+    - For moderate emotions (e.g., anxiety, stress): respond with 2-3 concise lines.
+    - For crisis-level input: give a longer, supportive message with clear help suggestions.
   expected_output: >
-    A final response, e.g., "You seem neutral—try a quick stretch or deep breathing to boost your mood!"
+    A concise, human-like response adapted to the emotional tone and urgency.
   output_key: final_response
   agent: orchestrator
   context:
