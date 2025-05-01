@@ -1,0 +1,20 @@
+detect_emotion:
+  description: >
+    Analyze the user input and detect the emotional state.
+  expected_output: >
+    A single-word emotional state (e.g., anxious, sad, calm, angry).
+  agent: emotion_detector
+
+suggest_tip:
+  description: >
+    Provide one or more self-care tips based on the detected emotion.
+  expected_output: >
+    A brief and actionable suggestion (e.g., breathing exercise, journaling, short walk).
+  agent: suggestion_agent
+
+safety_check:
+  description: >
+    Assess the user's input for potential crisis signals.
+  expected_output: >
+    A classification of either "SAFE" or "CRITICAL".
+  agent: safety_agent
