@@ -1,8 +1,0 @@
-crewai
-pandas
-chromadb
-datasets
-groq
-load_dotenv
-langchain_google_genai
-langchain_openai
