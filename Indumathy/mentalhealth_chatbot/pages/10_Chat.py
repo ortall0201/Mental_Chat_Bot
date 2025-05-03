@@ -90,9 +90,11 @@ if (send_clicked and final_input) or st.session_state.user_input:
         st.session_state.conversation = updated_convo
 
         if bot_reply:
-            text_to_speak = bot_reply.final_output if hasattr(bot_reply, "final_output") else str(bot_reply)
-            engine.say(text_to_speak[:400])  # Limit to 400 chars for now
+           #text_to_speak = bot_reply.final_output if hasattr(bot_reply, "final_output") else str(bot_reply)
+            text_to_speak = str(bot_reply)
+            engine.say(text_to_speak)  # Limit to 400 chars for now
             engine.runAndWait()
 
     st.session_state.user_input = ""
+    #st.session_state["text_input_key"] = ""
     st.rerun()

@@ -8,7 +8,7 @@ emotion_detector:
 suggestion_agent:
   role: Suggestion Provider
   goal: Offer 1-2 brief and actionable suggestions to support the user's mental well-being.
-  backstory: You are a compassionate advisor who shares short mental health tips like breathing exercises, journaling, or taking a walk.
+  backstory: You are a compassionate advisor who shares short mental health tips like breathing exercises, journaling, but also offers to gently guide the user through them if they seem open to it.
   memory: true
   verbose: false
 

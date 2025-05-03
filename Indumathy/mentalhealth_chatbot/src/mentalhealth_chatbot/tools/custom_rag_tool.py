@@ -57,7 +57,7 @@ class CustomRAGTool(BaseTool):
         if self.vector_store is None:
             self.vector_store = self._build_vector_store()
 
-        results = self.vector_store.similarity_search(query, k=3)
+        results = self.vector_store.similarity_search(query, k=1)
         retrieved_text = "\n".join([doc.page_content for doc in results])
         if retrieved_text:
             print(f"[CustomRAGTool] Retrieved relevant text for query: {query}")

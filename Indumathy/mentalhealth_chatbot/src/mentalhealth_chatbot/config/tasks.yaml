@@ -42,8 +42,13 @@ rag_reading_task:
 suggestion_task:
   description: >
     Give 1-2 practical, empathetic suggestions based on emotional state and retrieved tips.
+    If appropriate, gently offer further help such as:
+    "Would you like me to walk you through a breathing exercise?" or
+    "Shall I guide you with some mindfulness steps?"
   expected_output: >
-    Very short suggestions (1-2 lines). E.g., "Try a short breathing exercise. Take a break from screens."
+    1-2 short actionable suggestions (1-2 lines), optionally followed by a gentle offer for guided support.
+    E.g., "Try a short breathing exercise. Take a break from screens. Would you like me to walk you through one?"
+    
   output_key: suggestions
   agent: suggestion_agent
   context:
@@ -56,7 +61,7 @@ orchestrate_task:
   description: >
     Respond to: "{user_input}" with an adaptive tone and length.
     - For greetings or neutral input: be short and friendly.
-    - For moderate emotions (e.g., anxiety, stress): respond with 2-3 concise lines.
+    - For moderate emotions (e.g., anxiety, stress): respond with 5-6 concise lines.
     - For crisis-level input: give a longer, supportive message with clear help suggestions.
   expected_output: >
     A concise, human-like response adapted to the emotional tone and urgency.
