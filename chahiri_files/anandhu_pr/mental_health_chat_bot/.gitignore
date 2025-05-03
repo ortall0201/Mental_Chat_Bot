@@ -1,0 +1,20 @@
+# Ignore environment variables
+.env
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore system files
+.DS_Store
+
+# Ignore local virtual environment folders
+venv/
+.venv/
+crew_env_312/
+
+# Ignore credentials
+*.json
+
+# Ignore logs
+logs/
