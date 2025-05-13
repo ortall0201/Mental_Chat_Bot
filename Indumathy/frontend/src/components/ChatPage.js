@@ -66,7 +66,7 @@ const ChatPage = () => {
 
   return (
     <Card className="max-w-4xl mx-auto mt-10 p-6 h-[75vh] flex flex-col">
-      <h2 className="text-2xl font-bold text-green-700 mb-4">MindfulChat 🤖</h2>
+      <h2 className="text-2xl font-bold text-green-700 mb-4">Omdena-MindfulChat 🤖</h2>
 
       <div className="flex-1 overflow-y-auto space-y-4 mb-4">
         {messages.map((msg, idx) => (
@@ -98,3 +98,5 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
+
+

@@ -14,7 +14,10 @@ const AssessmentSelection = () => {
       return;
     }
     localStorage.setItem("remaining_issues", JSON.stringify(selectedIssues));
-    const first = selectedIssues[0].toLowerCase();
+    //const first = selectedIssues[0].toLowerCase();
+    let first = selectedIssues[0].toLowerCase();
+    if (first.includes("fomo")) first = "fomo";  // Normalize FOMO issue
+
     navigate(`/assessment-${first}`);
   };
 

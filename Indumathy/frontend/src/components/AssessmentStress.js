@@ -65,7 +65,9 @@ const AssessmentStress = () => {
 
     setTimeout(() => {
       if (updatedRemaining.length > 0) {
-        const next = updatedRemaining[0].toLowerCase();
+        //const next = updatedRemaining[0].toLowerCase();
+        let next = updatedRemaining[0].toLowerCase();
+        if (next.includes("fomo")) next = "fomo";
         navigate(`/assessment-${next}`);
       } else {
         navigate("/chat");

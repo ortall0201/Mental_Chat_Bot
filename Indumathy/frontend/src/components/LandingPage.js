@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-cyan-100">
       <div className="bg-white rounded-2xl shadow-xl p-8 max-w-lg w-full text-center">
-        <h1 className="text-3xl font-extrabold text-teal-700 mb-2">MindfulChat</h1>
+        <h1 className="text-3xl font-extrabold text-teal-700 mb-2">Omdena-MindfulChat</h1>
         <p className="text-gray-700 mb-1">A safe space to talk about your mental health</p>
         <p className="text-gray-600 mb-6 text-lg">
           MindfulChat is here to provide support, resources,<br />
