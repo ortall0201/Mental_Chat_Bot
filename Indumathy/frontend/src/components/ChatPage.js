@@ -8,34 +8,31 @@ const ChatPage = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const recognitionRef = useRef(null);
-  const synthRef = useRef(window.speechSynthesis);
 
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-    const userMsg = { sender: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
+  const sendMessage = async (mode = "text", customInput = null) => {
+    const userInput = customInput || input.trim();
+    if (!userInput) return;
+
+    setMessages((prev) => [...prev, { sender: "user", text: userInput }]);
     setInput("");
 
     try {
       const res = await axios.post("http://localhost:8000/chat", {
-        message: input,
+        message: userInput,
         history: messages.map((msg) => `${msg.sender}: ${msg.text}`),
+        mode: mode,
       });
 
       const reply = res.data.response?.raw || res.data.response || "No response";
-      const botMsg = { sender: "bot", text: reply };
-      setMessages((prev) => [...prev, botMsg]);
-      speakText(reply);
+      setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
+
+      if (mode === "voice" && res.data.audio) {
+        const audio = new Audio(`http://localhost:8000${res.data.audio}`);
+        audio.play();
+      }
     } catch (err) {
       console.error("Error:", err);
     }
-  };
-
-  const speakText = (text) => {
-    if (!synthRef.current) return;
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "en-US";
-    synthRef.current.speak(utter);
   };
 
   const startListening = () => {
@@ -51,7 +48,7 @@ const ChatPage = () => {
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
-      setInput(transcript);
+      sendMessage("voice", transcript);
     };
 
     recognition.onerror = (e) => console.error("STT Error:", e);
@@ -61,7 +58,7 @@ const ChatPage = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") sendMessage();
+    if (e.key === "Enter") sendMessage("text");
   };
 
   return (
@@ -76,7 +73,9 @@ const ChatPage = () => {
               msg.sender === "user" ? "bg-green-100 ml-auto text-right" : "bg-gray-100 text-left"
             }`}
           >
-            <span className="block font-semibold mb-1">{msg.sender === "user" ? "You" : "Bot"}:</span>
+            <span className="block font-semibold mb-1">
+              {msg.sender === "user" ? "You" : "Bot"}:
+            </span>
             {msg.text}
           </div>
         ))}
@@ -90,7 +89,7 @@ const ChatPage = () => {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
         />
-        <Button onClick={sendMessage}>Send</Button>
+        <Button onClick={() => sendMessage("text")}>Send</Button>
         <Button onClick={startListening}>🎤</Button>
       </div>
     </Card>
@@ -98,5 +97,3 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
-
-
