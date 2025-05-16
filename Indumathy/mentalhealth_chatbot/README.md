@@ -1,54 +1,62 @@
-# MentalHealthChatBot Crew
+# 🧠 Omdena MindfulChat – Mental Health Chatbot (Team 1)
 
-Welcome to the MentalHealthChatBot Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+This is a voice-enabled, agentic AI-based mental health chatbot developed using **CrewAI**, **FastAPI**, and **React**. It provides users with personalized self-care suggestions, multi-step mental health assessments, and voice/text interactions, supported by Retrieval-Augmented Generation (RAG).
 
-## Installation
+---
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## 🚀 Features
 
-First, if you haven't already, install uv:
+- ✨ **CrewAI Multi-Agent Architecture**: EmotionDetector, SuggestionAgent, SafetyAgent, RAGRetriever, RAGReader
+- 🔍 **RAG Search**: Uses HuggingFace embeddings and FAISS vector database for tip retrieval
+- 🧠 **LLM Integration**: Gemini 2.0 Flash via API key (no Google Cloud required)
+- 🗣️ **Voice Interaction**:
+  - **STT**: Whisper for speech-to-text
+  - **TTS**: pyttsx3 for local text-to-speech
+- 🧪 **Assessments**: Multi-step mental health surveys (Stress, Anxiety, Depression, FOMO)
+- 💾 **Session Memory**: Tracks user inputs and stores logs in CSV format
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend**: React + TailwindCSS  
+- **Backend**: FastAPI (Python)
+- **LLM**: Gemini (API key-based)
+- **Embeddings**: HuggingFace (MiniLM-L6-v2)
+- **Vector DB**: FAISS
+- **Voice Tools**: Whisper (STT), pyttsx3 (TTS)
+- **Agents**: CrewAI with YAML config
+- **Memory**: CSV-based logs for sessions and assessments
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the Repository
 
 ```bash
-pip install uv
-```
+git clone https://github.com/OmdenaAI/agentic-based-Mental-Health-chatbot-using-Langchain-workflows.git
+cd agentic-based-Mental-Health-chatbot-using-Langchain-workflows
+git checkout team1
+cd POC_UI_STT_TTS_10_5
 
-Next, navigate to your project directory and install the dependencies:
+### 2️⃣ Backend Setup (FastAPI)
+python -m venv venv
+venv\Scripts\activate          # On Windows
+cd mentalhealth_chatbot
+pip install .       # To run pyproject.toml
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+### Create .env file inside mentalhealth_chatbot
+GEMINI_API_KEY=your_gemini_api_key_here
+## Run the backend
+uvicorn fastapi_app.main:app --reload
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+### 3️⃣ Frontend Setup (React)
+## Go to new terminal
+cd POC_UI_STT_TTS_10_5/frontend
+npm install
+npm start
 
-- Modify `src/mental_health_chat_bot/config/agents.yaml` to define your agents
-- Modify `src/mental_health_chat_bot/config/tasks.yaml` to define your tasks
-- Modify `src/mental_health_chat_bot/crew.py` to add your own logic, tools and specific args
-- Modify `src/mental_health_chat_bot/main.py` to add custom inputs for your agents and tasks
 
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the mental_health_chat_bot Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The mental_health_chat_bot Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the MentalHealthChatBot Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+### Then open below link  in the browser
+http://localhost:3000
